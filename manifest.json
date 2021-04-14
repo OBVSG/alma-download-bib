@@ -1,0 +1,19 @@
+{
+   "id": "download-bib",
+   "title": "Download BIB",
+   "subtitle": "Download a single BIB in XML format",
+   "author": "Josh Weisman",
+   "description": "Select a record in an Alma screen and download the whole record in XML format. No need to create a set to export record.",
+   "contentSecurity": {
+      "sandbox": {
+         "downloads": true
+      }
+   },
+   "icon": {
+      "type": "font",
+      "value": "fa fa-arrow-circle-o-down"
+   },
+   "entities": [
+      "BIB_MMS"
+   ]
+}

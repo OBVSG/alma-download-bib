@@ -1,0 +1,17 @@
+
+<div class="eca-actions">
+  <button mat-flat-button color="secondary" (click)="selectedEntity = null" [disabled]="!selectedEntity">{{ 'Clear' | translate}}</button>
+  <button mat-flat-button color="primary" (click)="download()"
+    [disabled]="!selectedEntity">{{ 'Main.Download' | translate}}
+  </button>
+</div>
+<label id="select-bib-label" translate>Main.SelectABib</label>
+<eca-select-entity #selectEntity
+  [(selected)]="selectedEntity"
+  [entityTypes]="entityTypes"
+  >
+</eca-select-entity>
+
+<div class="loading-shade" *ngIf="loading">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>

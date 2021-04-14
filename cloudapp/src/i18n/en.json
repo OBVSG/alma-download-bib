@@ -1,0 +1,8 @@
+{
+  "Clear": "Clear",
+  "Main": {
+    "NoEntities": "Please navigate to a list of bibliographic records.",
+    "SelectABib": "Please select a BIB record",
+    "Download": "Download BIB"
+  }
+}
