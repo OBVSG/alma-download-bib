@@ -19,5 +19,16 @@
     "ngx-toastr": "^12.0.0",
     "rxjs": "^6.5.5",
     "uuid": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "jasmine-core": "^3.7.1",
+    "jasmine-spec-reporter": "^7.0.0",
+    "karma": "^6.3.2",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage-istanbul-reporter": "^3.0.3",
+    "karma-jasmine": "^4.0.1",
+    "karma-jasmine-html-reporter": "^1.5.4"
   }
 }

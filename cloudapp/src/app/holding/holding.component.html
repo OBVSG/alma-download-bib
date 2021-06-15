@@ -1,0 +1,70 @@
+<!-- list of currently fetched holding record with some properties -->
+<div class="back-link">
+  <a mat-flat-button color="secondary" [routerLink]="['/bib', bibId]">{{
+    'operations.BackToBib' | translate
+  }}</a>
+</div>
+
+<div class="holding-item" *ngIf="!loading">
+  <h1>HOLDING Record</h1>
+
+  <p><strong>holding_id: </strong> {{ currentHoldingJson?.holding_id }}</p>
+  <p><strong>created_by: </strong> {{ currentHoldingJson?.created_by }}</p>
+  <p><strong>created_date: </strong> {{ currentHoldingJson?.created_date }}</p>
+  <p>
+    <strong>originating_system: </strong>
+    {{ currentHoldingJson?.originating_system }}
+  </p>
+  <p>
+    <strong>last_modified_by: </strong>
+    {{ currentHoldingJson?.last_modified_by }}
+  </p>
+
+  <div class="holding__actions">
+    <!-- button to download the holding.anies property as text/xml file-->
+    <button
+      class="action-button"
+      mat-flat-button
+      color="primary"
+      (click)="downloadHoldingAnies()"
+    >
+      <span
+        class="uxf-icon uxf-download"
+        style="margin: -8px 5px 0 0; color: white"
+      ></span
+      >{{ 'operations.DownloadHoldingAnies' | translate }}
+    </button>
+
+    <!-- button to download the whole holding record as text/xml file -->
+    <button
+      class="action-button"
+      mat-flat-button
+      color="primary"
+      (click)="downloadHoldingXml()"
+    >
+      <span
+        class="uxf-icon uxf-download"
+        style="margin: -8px 5px 0 0; color: white"
+      ></span
+      >{{ 'operations.DownloadHoldingXml' | translate }}
+    </button>
+
+    <!-- button to download the whole holding/items url record as text/xml file -->
+    <button
+      class="action-button"
+      mat-flat-button
+      color="primary"
+      (click)="downloadItemsXml()"
+    >
+      <span
+        class="uxf-icon uxf-download"
+        style="margin: -8px 5px 0 0; color: white"
+      ></span
+      >{{ 'operations.DownloadItemsXml' | translate }}
+    </button>
+  </div>
+</div>
+
+<div class="loading-shade" *ngIf="loading">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>

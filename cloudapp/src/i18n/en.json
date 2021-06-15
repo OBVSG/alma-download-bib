@@ -1,8 +1,19 @@
 {
-  "Clear": "Clear",
-  "Main": {
+  "operations": {
+    "Home": "Home",
+    "Clear": "Reset Alma Page",
+    "More": "More",
+    "BackToBib": "Back to BIB",
+    "DownloadBibAnies": "Download MARC-XML",
+    "DownloadBibXml": "Download BIB XML",
+    "DownloadHoldingAnies": "Download HOLDING MARC-XML",
+    "DownloadHoldingXml": "Download HOLDING XML",
+    "DownloadItemsXml": "Download ITEMS XML",
+    "ShowHoldings": "List HOLDINGS"
+  },
+  "userGuides": {
     "NoEntities": "Please navigate to a list of bibliographic records.",
     "SelectABib": "Please select a BIB record",
-    "Download": "Download BIB"
+    "Desc": "Description"
   }
 }

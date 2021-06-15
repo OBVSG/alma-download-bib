@@ -1,19 +1,44 @@
 {
-   "id": "download-bib",
-   "title": "Download BIB",
-   "subtitle": "Download a single BIB in XML format",
-   "author": "Josh Weisman",
-   "description": "Select a record in an Alma screen and download the whole record in XML format. No need to create a set to export record.",
-   "contentSecurity": {
-      "sandbox": {
-         "downloads": true
-      }
-   },
-   "icon": {
-      "type": "font",
-      "value": "fa fa-arrow-circle-o-down"
-   },
-   "entities": [
-      "BIB_MMS"
-   ]
+  "id": "download-bib",
+  "title": [
+    {
+      "lang": "en",
+      "text": "Download BIB"
+    },
+    {
+      "lang": "de",
+      "text": "Download BIB"
+    }
+  ],
+  "subtitle": [
+    {
+      "lang": "en",
+      "text": "Download a single BIB in XML format"
+    },
+    {
+      "lang": "de",
+      "text": "Download einzelner Bib-Sätze als XML"
+    }
+  ],
+  "author": "OBVSG - The Austrian Library Network and Service Ltd",
+  "description": [
+    {
+      "lang": "en",
+      "text": "Select a record in an Alma screen and download the whole record in XML format. No need to create a set to export record."
+    },
+    {
+      "lang": "de",
+      "text": "Einfach einen Datensatz direkt in Alma auswählen und direkt als XML-Datei herunterladen. Es muss weder ein Set gebildet noch ein Export-Job gestartet werden."
+    }
+  ],
+  "contentSecurity": {
+    "sandbox": {
+      "downloads": true
+    }
+  },
+  "icon": {
+    "type": "url",
+    "value": "/assets/download-bib.png"
+  },
+  "license": "https://github.com/OBVSG/alma-download-bib/blob/master/LICENSE"
 }

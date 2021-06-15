@@ -1,0 +1,19 @@
+<header>
+  <!-- button to navigate user to the home page of application -->
+  <a translate mat-stroked-button color="primary" routerLink="/"
+    ><span class="uxf-icon uxf-home" style="margin: -8px 5px 0 0"></span
+    >{{ 'operations.Home' | translate }}</a
+  >
+
+  <!-- button to reset and clear the alma page -->
+  <button
+    translate
+    mat-stroked-button
+    color="secondary"
+    (click)="refreshAlma()"
+  >
+    {{ 'operations.Clear' | translate }}
+  </button>
+</header>
+
+<mat-divider></mat-divider>

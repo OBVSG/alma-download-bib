@@ -4,18 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule, getTranslateModule, AlertModule } from '@exlibris/exl-cloudapp-angular-lib';
+import {
+  MaterialModule,
+  getTranslateModule,
+  AlertModule,
+} from '@exlibris/exl-cloudapp-angular-lib';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
-import { SelectEntitiesModule } from 'eca-components';
+import { HeaderComponent } from './header/header.component';
+import { BibComponent } from './bib/bib.component';
+import { HoldingComponent } from './holding/holding.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent,
-  ],
+  declarations: [AppComponent, MainComponent, HeaderComponent, BibComponent, HoldingComponent],
   imports: [
     MaterialModule,
     BrowserModule,
@@ -24,13 +27,15 @@ import { SelectEntitiesModule } from 'eca-components';
     HttpClientModule,
     AlertModule,
     FormsModule,
-    ReactiveFormsModule,     
+    ReactiveFormsModule,
     getTranslateModule(),
-    SelectEntitiesModule,
   ],
   providers: [
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'standard' } },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'standard' },
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,9 +1,10 @@
-import { finalize } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CloudAppRestService, Entity } from '@exlibris/exl-cloudapp-angular-lib';
-import { download, prettifyXml } from '../utilities/utils';
-// @ts-ignore
-import { entities as supportedEntities } from '../../../../manifest.json';
+import {
+  CloudAppEventsService,
+  Entity,
+  PageInfo
+} from '@exlibris/exl-cloudapp-angular-lib';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -11,27 +12,38 @@ import { entities as supportedEntities } from '../../../../manifest.json';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit, OnDestroy {
+  /**
+   * private property to hold the subscription to the loaded page on alma page
+   */
+  private pageLoad$: Subscription;
 
-  loading = false;
-  selectedEntity: Entity = null;
-  entityTypes = supportedEntities;
+  /**
+   * store the fetched entities from alma page in this property
+   * @type {Entity[]}
+   */
+  entitiesFromPageOnLoad: Entity[];
 
-  constructor(
-    private restService: CloudAppRestService,
-  ) {}
+  constructor(private eventsService: CloudAppEventsService) {}
 
-  ngOnInit() {
+  /**
+   * handler function for the default onPageLoad method of the event service
+   * @param pageInfo
+   */
+  onPageLoadHandler = (pageInfo: PageInfo) => {
+    this.entitiesFromPageOnLoad = pageInfo.entities || [];
+  };
+
+  ngOnInit(): void {
+    /**
+     * subscribe to the page load observable on component initialization
+     */
+    this.pageLoad$ = this.eventsService.onPageLoad(this.onPageLoadHandler);
   }
 
-  ngOnDestroy() {
-  }
-
-  download() {
-    this.loading = true;
-    this.restService.call<any>(this.selectedEntity.link)
-    .pipe(finalize(()=>this.loading = false))
-    .subscribe(
-      bib => download(`${bib.title}.xml`, 'text/xml', prettifyXml(bib.anies))
-    )
+  ngOnDestroy(): void {
+    /**
+     * good practice to unsubscribe unnecessary subscriptions
+     */
+    this.pageLoad$.unsubscribe();
   }
 }

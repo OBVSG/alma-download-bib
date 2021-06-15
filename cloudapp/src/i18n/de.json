@@ -1,0 +1,19 @@
+{
+  "operations": {
+    "Home": "Startseite",
+    "Clear": "Alma Seite Zurücksetzen",
+    "More": "Weiter",
+    "BackToBib": "Zurück zu BIB",
+    "DownloadBibAnies": "BIB MARC-XML Herunterladen",
+    "DownloadBibXml": "BIB XML Herunterladen",
+    "DownloadHoldingAnies": "HOLDING MARC-XML Herunterladen",
+    "DownloadHoldingXml": "HOLDING XML Herunterladen",
+    "DownloadItemsXml": "ITEMS XML Herunterladen",
+    "ShowHoldings": "HOLDINGS Zeigen"
+  },
+  "userGuides": {
+    "NoEntities": "Bitte navigieren Sie zu einer Liste bibliographischer Sätze.",
+    "SelectABib": "Bitte wählen Sie einen bibliographischen Satz aus.",
+    "Desc": "Beschreibung"
+  }
+}

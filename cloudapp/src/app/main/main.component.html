@@ -1,17 +1,43 @@
+<mat-grid-list cols="1">
+  <!-- container to preview either empty list or the loaded entities from alma page as list -->
+  <ng-container
+    *ngIf="
+      entitiesFromPageOnLoad?.length > 0;
+      then withEntities;
+      else withoutEntities
+    "
+  ></ng-container>
+</mat-grid-list>
 
-<div class="eca-actions">
-  <button mat-flat-button color="secondary" (click)="selectedEntity = null" [disabled]="!selectedEntity">{{ 'Clear' | translate}}</button>
-  <button mat-flat-button color="primary" (click)="download()"
-    [disabled]="!selectedEntity">{{ 'Main.Download' | translate}}
-  </button>
-</div>
-<label id="select-bib-label" translate>Main.SelectABib</label>
-<eca-select-entity #selectEntity
-  [(selected)]="selectedEntity"
-  [entityTypes]="entityTypes"
+<!-- empty list template -->
+<ng-template #withoutEntities>
+  <div class="no-entity-list">
+    <h2 translate>userGuides.NoEntities</h2>
+    <span class="uxf-icon uxf-list" style="font-size: 3em"></span>
+  </div>
+</ng-template>
+
+<!-- loaded entities from alma page -->
+<ng-template #withEntities>
+  <div
+    *ngFor="let entity of entitiesFromPageOnLoad; let i = index"
+    class="entity-item"
   >
-</eca-select-entity>
+    <h3 translate>userGuides.Desc</h3>
 
-<div class="loading-shade" *ngIf="loading">
-  <mat-spinner diameter="50"></mat-spinner>
-</div>
+    <p>{{ entity?.description }}</p>
+
+    <!-- router link to /bib/mms_id to preview single bib record -->
+    <a
+      class="entity-item__link"
+      mat-flat-button
+      color="primary"
+      [routerLink]="['/bib', entity.id]"
+      >{{ 'operations.More' | translate
+      }}<span
+        class="uxf-icon uxf-right-open"
+        style="margin: -4px -3px 0 5px; color: white"
+      ></span
+    ></a>
+  </div>
+</ng-template>

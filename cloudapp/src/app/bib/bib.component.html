@@ -1,0 +1,86 @@
+<!-- list of currently fetched bib record with some properties -->
+<div class="bib-item" *ngIf="!loading">
+  <h1>BIB Record</h1>
+
+  <p><strong>mms_id: </strong> {{ currentBibJson?.mms_id }}</p>
+  <p><strong>title: </strong> {{ currentBibJson?.title }}</p>
+  <p><strong>author: </strong> {{ currentBibJson?.author }}</p>
+  <p><strong>record_format: </strong> {{ currentBibJson?.record_format }}</p>
+  <p><strong>created_by: </strong> {{ currentBibJson?.created_by }}</p>
+  <p><strong>created_date: </strong> {{ currentBibJson?.created_date }}</p>
+
+  <div class="bib__actions">
+    <!-- button to download the bib.anies property as text/xml file-->
+    <button
+      class="action-button"
+      mat-flat-button
+      color="primary"
+      (click)="downloadBibJson()"
+    >
+      <span
+        class="uxf-icon uxf-download"
+        style="margin: -8px 5px 0 0; color: white"
+      ></span
+      >{{ 'operations.DownloadBibAnies' | translate }}
+    </button>
+
+    <!-- button to download the whole bib record as text/xml file -->
+    <button
+      class="action-button"
+      mat-flat-button
+      color="primary"
+      (click)="downloadBibXml()"
+    >
+      <span
+        class="uxf-icon uxf-download"
+        style="margin: -8px 5px 0 0; color: white"
+      ></span
+      >{{ 'operations.DownloadBibXml' | translate }}
+    </button>
+
+    <!-- button to preview list of bib.holdings property on bib record -->
+    <button
+      class="action-button"
+      mat-flat-button
+      color="secondary"
+      style="align-self: flex-end"
+      (click)="getHoldingsList()"
+    >
+      {{ 'operations.ShowHoldings' | translate }}
+    </button>
+  </div>
+</div>
+
+<!-- to preview list of holdings with some properties -->
+<div *ngIf="showHoldings">
+  <div
+    class="holding-item"
+    *ngFor="let holding of currentHoldings; let i = index"
+  >
+    <p><strong>holding_id: </strong> {{ holding?.holding_id }}</p>
+    <p><strong>call_number: </strong> {{ holding?.call_number }}</p>
+    <p><strong>Location Desc: </strong> {{ holding?.location.desc }}</p>
+
+    <!-- router link to navigate to fetch specific holding record on bib/mms_id/holding/holding_id endpoint -->
+    <a
+      class="bib-item__download"
+      mat-flat-button
+      color="primary"
+      [routerLink]="[
+        '/bib',
+        currentBibJson.mms_id,
+        'holding',
+        currentHoldings[i].holding_id
+      ]"
+      >{{ 'operations.More' | translate
+      }}<span
+        class="uxf-icon uxf-right-open"
+        style="margin: -4px -3px 0 5px; color: white"
+      ></span
+    ></a>
+  </div>
+</div>
+
+<div class="loading-shade" *ngIf="loading">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
